@@ -13,10 +13,10 @@ angular.module('invoice1', [])
   this.total = function (outCurr) {
     return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);
   };
-  this.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {
+  this.convertCurrency = function (amount, inCurr, outCurr) {
     return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];
   };
-  this.pay = function pay() {
+  this.pay = function () {
     window.alert("Thanks!");
   };
 });
