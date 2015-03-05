@@ -1,24 +1,17 @@
-angular.module('invoice1', [])
-.controller('InvoiceController', function() {
+angular.module('invoice1', ['finance'])
+.controller('InvoiceController', ['currencyConverter', function(currencyConverter) {
   this.qty = 1;
   this.cost = 2;
   this.inCurr = 'EUR';
-  this.currencies = ['USD', 'EUR', 'CNY'];
-  this.usdToForeignRates = {
-    USD: 1,
-    EUR: 0.74,
-    CNY: 6.09
-  };
+  this.currencies = currencyConverter.currencies;
 
   this.total = function (outCurr) {
-    return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);
-  };
-  this.convertCurrency = function (amount, inCurr, outCurr) {
-    return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];
+    return currencyConverter.convert(
+        this.qty * this.cost, this.inCurr, outCurr);
   };
   this.pay = function () {
     window.alert("Thanks!");
   };
-});
+}]);
 
 
