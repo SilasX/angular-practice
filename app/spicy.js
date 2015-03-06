@@ -1,4 +1,4 @@
-var myApp = angular.module('spicy', []);
+var myApp = angular.module('myapp', []);
 
 myApp.controller('SpicyController', ['$scope', function($scope) {
     $scope.spice = 'very';
@@ -12,4 +12,13 @@ myApp.controller('SpicyController', ['$scope', function($scope) {
     };
 }]);
 
-
+myApp.controller('MainController', ['$scope', function($scope) {
+  $scope.timeOfDay = 'morning';
+  $scope.name = 'Nikki';
+}]);
+myApp.controller('ChildController', ['$scope', function($scope) {
+  $scope.name = 'Mattie';
+}]);
+myApp.controller('GrandChildController', ['$scope', function($scope) {
+  $scope.name = 'Gingerbread Baby';
+}]);
